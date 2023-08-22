@@ -1,14 +1,16 @@
 %%
-[A-Z]+[\t\n ] { printf("%s is a capital word\n",yytext); }
-.  ;
+[A-Z][A-Z]*[\t\n ] { printf("%s is valid wordn", yytext); }
+[a-z][a-z]*[\t\n ] { printf("%s is invalid word\n", yytext); }
+.|\n { printf("%s is invalid\n", yytext); }
 %%
 
-int main( ) 
+int main() 
 {
-	printf("Enter String :\n");
-	yylex();
+    printf("Enter String:\n");
+    yylex();
 }
-int yywrap( )
+
+int yywrap() 
 {
-	return 1;
+    return 1;
 }
